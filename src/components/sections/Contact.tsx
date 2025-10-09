@@ -77,14 +77,14 @@ export function Contact() {
               </p>
 
               <div className="space-y-5 mb-10">
-                <a href="mailto:val.mannucci@gmail.com" className="flex items-center gap-3 group">
+                <a href="mailto:federico.marini@incognitoai.it" className="flex items-center gap-3 group">
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[--surface] border border-[var(--border-color)] group-hover:bg-[--surface-muted] transition-colors">
                     <Mail className="h-5 w-5" />
                   </span>
-                  <span className="text-sm sm:text-base">val.mannucci@gmail.com</span>
+                  <span className="text-sm sm:text-base">federico.marini@incognitoai.it</span>
                 </a>
                 <a
-                  href="mailto:val.mannucci@gmail.com?subject=Call%20request&body=Tell%20me%20about%20your%20project%20and%20share%20a%20few%20time%20slots."
+                  href="mailto:federico.marini@incognitoai.it?subject=Call%20request&body=Tell%20me%20about%20your%20project%20and%20share%20a%20few%20time%20slots."
                   className="flex items-center gap-3 group"
                 >
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[--surface] border border-[var(--border-color)] group-hover:bg-[--surface-muted] transition-colors">
@@ -96,17 +96,14 @@ export function Contact() {
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[--surface] border border-[var(--border-color)]">
                     <MapPin className="h-5 w-5" />
                   </span>
-                  <span className="text-sm sm:text-base">Rome, Italy</span>
+                  <span className="text-sm sm:text-base">Rome / Paris</span>
                 </div>
               </div>
 
               <div className="flex flex-wrap gap-4">
                 {[
-                  { href: "https://github.com/valeman100", icon: Github, label: "GitHub" },
-                  { href: "https://www.linkedin.com/in/valerio-mannucci/", icon: Linkedin, label: "LinkedIn" },
-                  { href: "https://x.com/Valeman100", icon: Twitter, label: "Twitter" },
-                  { href: "https://www.instagram.com/valeemann/", icon: Instagram, label: "Instagram" },
-                  { href: "https://www.tiktok.com/@valeemann", icon: Music2, label: "TikTok" },
+                  { href: "https://github.com/federico-marini", icon: Github, label: "GitHub" },
+                  { href: "https://www.linkedin.com/in/federico-marini", icon: Linkedin, label: "LinkedIn" },
                 ].map((item) => (
                   <a
                     key={item.label}

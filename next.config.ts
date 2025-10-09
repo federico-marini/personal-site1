@@ -12,11 +12,6 @@ const withMDX = createMDX({
 const nextConfig: NextConfig = {
   // Allow `.mdx` files to be resolved as pages/routes
   pageExtensions: ["ts", "tsx", "mdx"],
-  output: "export",
-  images: {
-    unoptimized: true,
-  },
-  basePath: process.env.NEXT_PUBLIC_BASE_PATH || "",
 };
 
 export default withMDX(nextConfig);

@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
 
     await resend.emails.send({
       from,
-      to: "val.mannucci@gmail.com",
+      to: "federico.marini@incognitoai.it",
       replyTo: email,
       subject,
       text,
