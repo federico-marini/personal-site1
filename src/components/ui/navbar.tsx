@@ -25,7 +25,7 @@ export function Navbar() {
     <header className="fixed top-0 inset-x-0 z-50 border-b neon-border backdrop-blur-md bg-background/60">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 h-14 flex items-center justify-between gap-3">
         <Link href="/" className="font-semibold tracking-tight">
-          Vale.dev
+          FM.dev
         </Link>
         <nav className="hidden md:flex items-center gap-1">
           {navItems.map((item) => (
@@ -41,7 +41,7 @@ export function Navbar() {
         <div className="flex items-center gap-2">
           <ThemeToggle />
           <Button asChild variant="outline">
-            <a href="https://github.com/valeman100" target="_blank" rel="noreferrer">
+            <a href="https://github.com/federico-marini" target="_blank" rel="noreferrer">
               <Github className="h-4 w-4 mr-2" /> GitHub
             </a>
           </Button>

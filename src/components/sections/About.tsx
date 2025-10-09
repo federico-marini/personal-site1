@@ -2,7 +2,6 @@
 
 import { Card } from "@/components/ui/card";
 import { Reveal, Parallax } from "@/components/motion/scroll";
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useInView, useMotionValue, animate } from "framer-motion";
 
@@ -53,15 +52,11 @@ export function About() {
         <div className="grid md:grid-cols-[1fr_2fr] gap-8 items-start">
           <Parallax>
             <Card className="overflow-hidden h-64 sm:h-80 md:h-96 neon-shadow border neon-border bg-[--surface-muted]">
-              <div className="relative w-full h-full">
-                <Image
-                  src="/me.jpeg"
-                  alt="My photo"
-                  fill
-                  className="object-cover"
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  priority
-                />
+              <div className="relative w-full h-full flex items-center justify-center bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900">
+                <div className="text-center p-8">
+                  <div className="text-6xl mb-4">📊</div>
+                  <p className="text-sm text-zinc-600 dark:text-zinc-400">Photo coming soon</p>
+                </div>
               </div>
             </Card>
           </Parallax>

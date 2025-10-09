@@ -21,7 +21,7 @@ function VonKarmanParticles() {
   useMemo(() => {
     particles.current = Array.from({ length: particleCount }, () => ({
       position: new THREE.Vector3(
-        Math.random() * 20 - 10,
+        Math.random() * 24 - 12,
         Math.random() * 10 - 5,
         Math.random() * 2 - 1
       ),
@@ -53,8 +53,8 @@ function VonKarmanParticles() {
       const x = p.position.x;
       const y = p.position.y;
 
-      // Cylinder obstacle at center-left
-      const obstacleX = -6;
+      // Cylinder obstacle at left side
+      const obstacleX = -8;
       const obstacleY = 0;
       const obstacleRadius = 1.2;
 
@@ -105,11 +105,11 @@ function VonKarmanParticles() {
       p.age += 1;
 
       // Reset particles that flow off screen or are too old
-      if (p.position.x > 10 || p.position.x < -10 ||
+      if (p.position.x > 12 || p.position.x < -12 ||
           p.position.y > 5 || p.position.y < -5 ||
           p.age > p.maxAge) {
         // Respawn at left side
-        p.position.x = -10 + Math.random() * 2;
+        p.position.x = -12 + Math.random() * 2;
         p.position.y = Math.random() * 10 - 5;
         p.position.z = Math.random() * 2 - 1;
         p.age = 0;
