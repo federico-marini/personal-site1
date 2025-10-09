@@ -68,7 +68,6 @@ function VonKarmanParticles() {
 
       // Create vortex shedding pattern
       if (distToObstacle < 8) {
-        const angle = Math.atan2(dy, dx);
         const vortexStrength = 3.0;
 
         // Alternating vortices using sine wave pattern
@@ -126,16 +125,14 @@ function VonKarmanParticles() {
     posAttribute.needsUpdate = true;
   });
 
+  const geometry = useMemo(() => {
+    const geom = new THREE.BufferGeometry();
+    geom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    return geom;
+  }, [positions]);
+
   return (
-    <points ref={particlesRef}>
-      <bufferGeometry>
-        <bufferAttribute
-          attach="attributes-position"
-          count={particleCount}
-          array={positions}
-          itemSize={3}
-        />
-      </bufferGeometry>
+    <points ref={particlesRef} geometry={geometry}>
       <pointsMaterial
         size={0.08}
         color="#ffffff"

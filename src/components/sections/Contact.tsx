@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { Github, Instagram, Linkedin, Music2, Mail, MapPin, Twitter, CalendarDays } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, CalendarDays } from "lucide-react";
 import { Reveal } from "@/components/motion/scroll";
 import { Card, CardContent } from "@/components/ui/card";
 

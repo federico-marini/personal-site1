@@ -24,7 +24,7 @@ export function Hero() {
               Data Scientist & Founder
             </p>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
-            <span className="block">Hi, I'm Federico.</span>
+            <span className="block">Hi, I&apos;m Federico.</span>
             <span className="block">I translate complexity into clarity.</span>
             </h1>
             <p className="text-zinc-600 dark:text-zinc-400 max-w-prose">
