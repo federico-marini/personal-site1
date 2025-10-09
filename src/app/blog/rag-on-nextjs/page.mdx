@@ -1,0 +1,62 @@
+export const metadata = {
+  title: "Getting Started with RAG on Next.js",
+  description: "Intro pratica a Retrieval-Augmented Generation con vector search e streaming UI in Next.js.",
+  date: "2025-02-01",
+  tags: ["AI", "RAG", "Next.js"],
+  keywords: ["AI", "RAG", "Next.js"],
+  openGraph: { type: "article" },
+  alternates: { canonical: "/blog/rag-on-nextjs" },
+};
+
+import { ArticleJsonLd } from "@/components/seo/ArticleJsonLd";
+import { absoluteUrl } from "@/lib/site";
+
+<ArticleJsonLd
+  url={absoluteUrl('/blog/rag-on-nextjs')}
+  title="Getting Started with RAG on Next.js"
+  description="Intro pratica a Retrieval-Augmented Generation con vector search e streaming UI in Next.js."
+  datePublished="2025-02-01"
+  tags={["AI", "RAG", "Next.js"]}
+/> 
+
+import { Badge } from "@/components/ui/badge";
+import { Callout } from "@/components/mdx/Callout";
+import { DemoRAG } from "@/components/mdx/DemoRAG";
+
+# Getting Started with RAG on Next.js
+
+<Badge variant="secondary">AI</Badge> <Badge>RAG</Badge>
+
+RAG combina retrieval e generazione per ancorare gli LLM a conoscenza aggiornata e specifica del dominio. In questo post configuriamo un flusso base con embeddings, un DB vettoriale e UI in streaming in Next.js.
+
+<Callout variant="info" title="Cosa costruiremo">
+  Un giocattolo che simula una ricerca vettoriale e mostra i risultati come contesto per l'LLM.
+  È tutto client-side e senza backend, perfetto per spiegare i concetti.
+</Callout>
+
+## Concetti chiave
+
+- Embeddings: mappano testo in spazi ad alta dimensionalità
+- Similarità (cosine): misura la vicinanza tra vettori
+- Retrieval: seleziona i "pezzi" più rilevanti
+- Generazione: l'LLM risponde usando il contesto recuperato
+
+```ts
+// Pseudocodice
+const queryEmbedding = embed(query);
+const ranked = rankByCosineSimilarity(queryEmbedding, documentEmbeddings);
+const context = topK(ranked).map((r) => r.chunk).join("\n");
+const answer = await llm.generate({ system, context, query });
+```
+
+## Demo
+
+<DemoRAG />
+
+## Prossimi passi
+
+- Sposta i documenti in un DB vettoriale reale (es. `pgvector`, `Pinecone`)
+- Calcola embeddings con una API (OpenAI, Cohere, o locale)
+- Aggiungi streaming della risposta con RSC/Edge
+
+

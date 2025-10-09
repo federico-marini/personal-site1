@@ -1,0 +1,63 @@
+export const metadata = {
+  title: "Designing delightful loading states",
+  description: "Pattern per migliorare la percezione delle performance: skeletons, ottimismo e motion.",
+  date: "2025-01-18",
+  tags: ["UX", "Motion", "Design"],
+  keywords: ["UX", "Motion", "Design"],
+  openGraph: { type: "article" },
+  alternates: { canonical: "/blog/loading-states-design" },
+};
+
+import { ArticleJsonLd } from "@/components/seo/ArticleJsonLd";
+import { absoluteUrl } from "@/lib/site";
+
+<ArticleJsonLd
+  url={absoluteUrl('/blog/loading-states-design')}
+  title="Designing delightful loading states"
+  description="Pattern per migliorare la percezione delle performance: skeletons, ottimismo e motion."
+  datePublished="2025-01-18"
+  tags={["UX", "Motion", "Design"]}
+/> 
+
+import { Badge } from "@/components/ui/badge";
+import { Callout } from "@/components/mdx/Callout";
+import { LoadingPlayground } from "@/components/mdx/LoadingPlayground";
+
+# Designing delightful loading states
+
+<Badge variant="secondary">UX</Badge> <Badge>Motion</Badge>
+
+La performance percepita conta. Skeletons, aggiornamenti ottimistici, e micro‑interazioni riducono l'ansia d'attesa e rendono l'esperienza più fluida.
+
+<Callout variant="success" title="Obiettivo">
+  Mostrare come alternare tra skeleton e aggiornamento ottimistico con un piccolo playground.
+</Callout>
+
+## Pattern
+
+1. Skeleton: occupa lo spazio del contenuto e comunica progresso
+2. Ottimistico: applica subito la modifica e riconcilia quando arriva la risposta
+3. Motion: piccoli hint di stato (pulse, shimmer) aiutano il contesto
+
+```tsx
+// Estratto del playground
+const save = async () => {
+  setIsSaving(true)
+  if (mode === "optimistic") setUsername(draft)
+  await sleep(1200)
+  if (mode === "skeleton") setUsername(draft)
+  setIsSaving(false)
+}
+```
+
+## Provalo
+
+<LoadingPlayground />
+
+## Check‑list UX
+
+- Conserva il layout per evitare "salti"
+- Comunica sempre lo stato (loading, success, error)
+- Fornisci affordance per riprovare
+
+
