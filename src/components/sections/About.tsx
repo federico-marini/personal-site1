@@ -90,7 +90,7 @@ export function About() {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <StatCard value={3} label="Years of Experience" />
                 <StatCard value={10} label="Projects Completed" />
-                <StatCard value={8} label="Research Papers" />
+                <StatCard value={1} label="Research Papers" />
               </div>
             </Reveal>
           </div>
