@@ -24,17 +24,39 @@ const display = Bricolage_Grotesque({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Federico Marini — Data Scientist & Founder",
+  title: "Federico Marini | Data Scientist, Physicist & AI Founder | Rome/Paris",
   description:
-    "Data Scientist at Deloitte & Founder of IncognitoAI. Building privacy-preserving AI systems, analytics pipelines, and GDPR-compliant LLM solutions.",
+    "Federico Marini - Data Scientist at Deloitte, Founder of IncognitoAI. Physicist turned data scientist specializing in privacy-preserving AI, GDPR-compliant LLM solutions, and high-performance analytics. Based in Rome and Paris.",
+  keywords: [
+    "Federico Marini",
+    "Data Scientist",
+    "Physicist",
+    "IncognitoAI",
+    "Deloitte",
+    "AI",
+    "Machine Learning",
+    "Privacy AI",
+    "GDPR",
+    "LLM",
+    "Rome",
+    "Paris",
+    "Python",
+    "Data Science",
+  ],
+  authors: [{ name: "Federico Marini" }],
+  creator: "Federico Marini",
+  publisher: "Federico Marini",
   openGraph: {
-    title: "Federico Marini — Data Scientist & Founder",
+    title: "Federico Marini | Data Scientist, Physicist & AI Founder",
     description:
       "Data Scientist at Deloitte & Founder of IncognitoAI. Building privacy-preserving AI systems, analytics pipelines, and GDPR-compliant LLM solutions.",
     type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    siteName: "Federico Marini",
     images: [
       {
-        url: "/opengraph-image", // Next will append .png
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
         alt: "Federico Marini — Data Scientist & Founder",
@@ -43,22 +65,29 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Federico Marini — Data Scientist & Founder",
+    title: "Federico Marini | Data Scientist & AI Founder",
     description:
       "Data Scientist at Deloitte & Founder of IncognitoAI. Building privacy-preserving AI systems, analytics pipelines, and GDPR-compliant LLM solutions.",
     images: ["/opengraph-image"],
+    creator: "@federicomarini",
   },
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon-48.png", type: "image/png", sizes: "48x48" },
-      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
-    ],
-    apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
-    shortcut: ["/favicon.ico"],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   alternates: {
     canonical: "/",
+  },
+  verification: {
+    // Add Google Search Console verification when you set it up
+    // google: "your-verification-code",
   },
 };
 

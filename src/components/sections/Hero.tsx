@@ -3,12 +3,20 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import dynamic from "next/dynamic";
+import { useState } from "react";
+import { Repeat } from "lucide-react";
 
 const VonKarmanScene = dynamic(() => import("@/components/hero/VonKarmanScene").then(m => m.VonKarmanScene), {
   ssr: false,
 });
 
+const LorenzScene = dynamic(() => import("@/components/hero/LorenzScene").then(m => m.LorenzScene), {
+  ssr: false,
+});
+
 export function Hero() {
+  const [simulation, setSimulation] = useState<"vonkarman" | "lorenz">("vonkarman");
+
   return (
     <section id="home" className="relative isolate pt-28 sm:pt-32">
       <BackgroundGradient />
@@ -46,9 +54,22 @@ export function Hero() {
             transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
             className="h-64 sm:h-80 md:h-96 rounded-2xl border neon-border bg-[--gradient-hero] relative overflow-hidden"
           >
-            <VonKarmanScene />
+            {simulation === "vonkarman" ? <VonKarmanScene /> : <LorenzScene />}
+
+            {/* Toggle button */}
+            <button
+              onClick={() => setSimulation(prev => prev === "vonkarman" ? "lorenz" : "vonkarman")}
+              className="absolute top-3 right-3 h-9 w-9 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-black/70 hover:border-white/40 transition-all duration-200 group"
+              title="Switch simulation"
+            >
+              <Repeat className="h-4 w-4 text-white/70 group-hover:text-white group-hover:rotate-180 transition-all duration-300" />
+            </button>
+
+            {/* Info label */}
             <div className="absolute bottom-3 right-3 text-xs text-zinc-500 dark:text-zinc-400 bg-black/50 px-2 py-1 rounded backdrop-blur-sm">
-              WIP: von Kármán vortex street simulation (Three.js/TSX)
+              {simulation === "vonkarman"
+                ? "von Kármán Vortex Street (Three.js/TSX)"
+                : "Lorenz Attractor - Chaos Theory (Three.js/TSX)"}
             </div>
           </motion.div>
         </div>

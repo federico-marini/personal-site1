@@ -21,7 +21,9 @@ export function Experience() {
       company: "Biophysics & Computational Modeling",
       period: "Before 2025",
       desc:
-        "Modeled self-assembling DNA nanostructures using simulation. Authored a preprint on computational DNA lattice formation published on arXiv:2505.04482.",
+        "Modeled self-assembling DNA nanostructures using simulation. Authored a paper on computational DNA lattice formation published in the Journal of Chemical Physics.",
+      link: "https://pubs.aip.org/aip/jcp/article-abstract/163/9/094902/3361142/Entropy-driven-phase-behavior-of-all-DNA?redirectedFrom=fulltext",
+      linkText: "View publication",
     },
   ];
 
@@ -44,6 +46,16 @@ export function Experience() {
                   <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
                     {item.desc}
                   </p>
+                  {"link" in item && item.link && (
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 mt-2 text-sm text-[--accent] hover:underline"
+                    >
+                      {item.linkText || "Learn more"} →
+                    </a>
+                  )}
                 </li>
               </Parallax>
             </Reveal>
