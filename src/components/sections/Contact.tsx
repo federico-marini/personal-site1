@@ -103,7 +103,7 @@ export function Contact() {
               <div className="flex flex-wrap gap-4">
                 {[
                   { href: "https://github.com/federico-marini", icon: Github, label: "GitHub" },
-                  { href: "https://www.linkedin.com/in/federico-marini", icon: Linkedin, label: "LinkedIn" },
+                  { href: "https://www.linkedin.com/in/federico-marini-893092b1/", icon: Linkedin, label: "LinkedIn" },
                 ].map((item) => (
                   <a
                     key={item.label}

@@ -199,15 +199,18 @@ function VonKarmanParticles() {
 }
 
 function Cylinder() {
-  return (
-    <group position={[-8, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
-      {/* Circular edge outline */}
-      <mesh>
-        <torusGeometry args={[1.0, 0.03, 16, 64]} />
-        <meshBasicMaterial color="#ffffff" />
-      </mesh>
-    </group>
-  );
+  // Hidden for now - will be re-enabled later
+  return null;
+
+  // return (
+  //   <group position={[-8, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
+  //     {/* Circular edge outline */}
+  //     <mesh>
+  //       <torusGeometry args={[1.0, 0.03, 16, 64]} />
+  //       <meshBasicMaterial color="#ffffff" />
+  //     </mesh>
+  //   </group>
+  // );
 }
 
 export function VonKarmanScene() {
