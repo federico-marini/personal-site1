@@ -47,16 +47,27 @@ function StatCard({ value, label }: { value: number; label: string }) {
 
 export function About() {
   return (
-    <section id="about" className="py-16 sm:py-24">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+    <section id="about" className="py-16 sm:py-24 relative">
+      {/* Background vortex image */}
+      <div
+        className="absolute inset-0 opacity-5 dark:opacity-10 pointer-events-none"
+        style={{
+          backgroundImage: 'url(/Karmansche_Wirbelstr_kleine_Re.jpeg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
         <div className="grid md:grid-cols-[1fr_2fr] gap-8 items-start">
           <Parallax>
             <Card className="overflow-hidden h-64 sm:h-80 md:h-96 neon-shadow border neon-border bg-[--surface-muted]">
-              <div className="relative w-full h-full flex items-center justify-center bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900">
-                <div className="text-center p-8">
-                  <div className="text-6xl mb-4">📊</div>
-                  <p className="text-sm text-zinc-600 dark:text-zinc-400">Photo coming soon</p>
-                </div>
+              <div className="relative w-full h-full">
+                <img
+                  src="/IMG_7947 2.jpeg"
+                  alt="Federico Marini"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </Card>
           </Parallax>

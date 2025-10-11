@@ -47,6 +47,9 @@ export function Hero() {
             className="h-64 sm:h-80 md:h-96 rounded-2xl border neon-border bg-[--gradient-hero] relative overflow-hidden"
           >
             <VonKarmanScene />
+            <div className="absolute bottom-3 right-3 text-xs text-zinc-500 dark:text-zinc-400 bg-black/50 px-2 py-1 rounded backdrop-blur-sm">
+              WIP: von Kármán vortex street simulation (Three.js/TSX)
+            </div>
           </motion.div>
         </div>
       </div>
