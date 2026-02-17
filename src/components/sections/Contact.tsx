@@ -70,21 +70,20 @@ export function Contact() {
           {/* Left: title, intro, details, socials */}
           <Reveal>
             <div>
-              <h2 className="text-3xl font-bold tracking-tight mb-5">Let’s build together!</h2>
+              <h2 className="text-3xl font-bold tracking-tight mb-5">Get in touch</h2>
               <p className="text-zinc-600 dark:text-zinc-400 mb-10 text-lg leading-relaxed">
-                I’m always interested in new opportunities and exciting projects. Whether you have a
-                question or just want to say hi, feel free to reach out!
+                Have a question, a project idea, or just want to connect? Drop me a message.
               </p>
 
               <div className="space-y-5 mb-10">
-                <a href="mailto:federico.marini@incognitoai.it" className="flex items-center gap-3 group">
+                <a href="mailto:federico.marini@incognitoai.eu" className="flex items-center gap-3 group">
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[--surface] border border-[var(--border-color)] group-hover:bg-[--surface-muted] transition-colors">
                     <Mail className="h-5 w-5" />
                   </span>
-                  <span className="text-sm sm:text-base">federico.marini@incognitoai.it</span>
+                  <span className="text-sm sm:text-base">federico.marini@incognitoai.eu</span>
                 </a>
                 <a
-                  href="mailto:federico.marini@incognitoai.it?subject=Call%20request&body=Tell%20me%20about%20your%20project%20and%20share%20a%20few%20time%20slots."
+                  href="mailto:federico.marini@incognitoai.eu?subject=Call%20request&body=Tell%20me%20about%20your%20project%20and%20share%20a%20few%20time%20slots."
                   className="flex items-center gap-3 group"
                 >
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[--surface] border border-[var(--border-color)] group-hover:bg-[--surface-muted] transition-colors">

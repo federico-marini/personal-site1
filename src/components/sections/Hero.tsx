@@ -29,15 +29,15 @@ export function Hero() {
             className="space-y-6"
           >
             <p className="text-sm uppercase tracking-widest text-zinc-500">
-              Data Scientist & Founder
+              Engineer & Founder
             </p>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
             <span className="block">Hi, I&apos;m Federico.</span>
-            <span className="block">I translate complexity into clarity.</span>
+            <span className="block">I build things that work.</span>
             </h1>
             <p className="text-zinc-600 dark:text-zinc-400 max-w-prose">
-              A physicist turned data scientist, I build systems that bridge science and business —
-              from analytics pipelines to AI-driven privacy architectures.
+              Physics background, engineering practice. I deploy AI agents in production,
+              design data pipelines, and ship software that solves real problems.
             </p>
             <div className="flex items-center gap-3">
             <Button variant="secondary" asChild className="border neon-border">
