@@ -77,13 +77,12 @@ export function About() {
             </Reveal>
             <Reveal delay={0.05}>
               <p className="text-zinc-600 dark:text-zinc-400">
-              I started from physics — modeling systems and uncovering hidden order in noise.
-              Now I do the same with data. At Deloitte, I design high-performance analytics
-              pipelines integrating .NET backends, Python microservices, and GIS data.
-              At IncognitoAI, I lead the development of a privacy-preserving LLM proxy that
-              masks PII using custom regex NER, deployed on-premise or in VPCs.
-              I believe in bridging science and business — turning algorithms into products
-              that move decisions, not just dashboards.
+              I studied physics — modeling systems, running simulations, learning to reason
+              from first principles. Now I apply that to engineering. At Wonderful AI I deploy
+              production AI agents for enterprise clients, building the middleware between
+              LLM systems and real business operations. On the side, I founded IncognitoAI,
+              a privacy layer for generative AI. I care about software that actually works
+              in production, not just in demos.
               </p>
             </Reveal>
             <Reveal delay={0.1}>

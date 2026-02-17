@@ -24,7 +24,7 @@ const allProjects: Project[] = [
     description: "A secure proxy for LLMs that anonymizes and re-injects sensitive data using custom regex NER before inference. Privacy by architecture — no sensitive tokens ever leave the company perimeter.",
     image: "/projects/incognitoai-logo.svg",
     tags: ["AI", "FastAPI", "Docker", "Redis", "FAISS", "Backend"],
-    links: { demo: "https://www.incognitoai.it/" }
+    links: { demo: "https://www.incognitoai.eu/" }
   },
   {
     id: "p2",

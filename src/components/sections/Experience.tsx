@@ -3,26 +3,33 @@ import { Reveal, Parallax } from "@/components/motion/scroll";
 export function Experience() {
   const items = [
     {
-      role: "Data Scientist",
-      company: "Deloitte Business Solutions (Smart Solutions Lab) — Rome, Italy",
-      period: "2025 — Present",
+      role: "Forward Deployed Engineer",
+      company: "Wonderful AI",
+      period: "2026 – Present",
       desc:
-        "Built real-estate valuation services integrating OMI data, cadastral shapefiles, and adaptive radius comparables. Deployed ML pipelines and dynamic pricing models on SQL Server + .NET Core, powering internal analytics tools.",
+        "Design and deploy production AI agents (voice and chat) for enterprise clients. Build backend middleware and REST APIs integrating LLM systems with client databases and external services. Contribute to model pipelines, benchmarking and evaluation frameworks.",
+    },
+    {
+      role: "Data Scientist",
+      company: "Deloitte Business Solutions",
+      period: "2025",
+      desc:
+        "Built an automated real-estate valuation engine, managing backend logic, pricing algorithms, and ETL pipelines for geo-spatial data. Developed Python + PostgreSQL pipelines integrating enterprise data from 30+ plants worldwide to power live C-level dashboards.",
     },
     {
       role: "Founder",
       company: "IncognitoAI",
-      period: "2025 — Present",
+      period: "2025 – Present",
       desc:
-        "Designed and implemented a FastAPI + Docker anonymization engine for LLMs. Raised early grants and incubated at Dock Startup Lab (Lazio Innova), winning Demo Day 2025. Architecting analytics modules for PII detection, masking logs, and AI-usage governance.",
+        "Built a proxy system that anonymizes PII in GenAI prompts using open-source models. Led product vision and early sales. Won July Demo Day, secured €18k public grant.",
     },
     {
       role: "Researcher",
-      company: "Biophysics & Computational Modeling",
-      period: "Before 2025",
+      company: "CINECA (ISCRA Class B)",
+      period: "2023 – 2024",
       desc:
-        "Modeled self-assembling DNA nanostructures using simulation. Authored a paper on computational DNA lattice formation published in the Journal of Chemical Physics.",
-      link: "https://pubs.aip.org/aip/jcp/article-abstract/163/9/094902/3361142/Entropy-driven-phase-behavior-of-all-DNA?redirectedFrom=fulltext",
+        "Engineered high-performance computing workflows and ran large-scale simulations in polymer physics. Optimized data pipelines using the Leonardo HPC framework.",
+      link: "https://doi.org/10.1063/5.0279969",
       linkText: "View publication",
     },
   ];
@@ -40,7 +47,7 @@ export function Experience() {
                 <li className="mb-10 ms-6">
                   <span className="absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-[--accent] text-[--accent-foreground] ring-2 ring-background shadow-[0_0_24px_rgba(56,189,248,0.4)]" />
                   <h3 className="font-semibold">
-                    {item.role} — {item.company}
+                    {item.role}, {item.company}
                   </h3>
                   <time className="block text-xs text-zinc-500">{item.period}</time>
                   <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
