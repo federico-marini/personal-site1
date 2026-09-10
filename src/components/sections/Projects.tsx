@@ -12,7 +12,7 @@ type Project = {
   id: string;
   title: string;
   description: string;
-  image: string;
+  image?: string;
   tags: string[];
   links?: { demo?: string; github?: string };
 };
@@ -24,6 +24,13 @@ const allProjects: Project[] = [
     description: "Production agentic voice system deployed for a major telecom. Scaled to 100K+ inbound calls/day with 75% containment and 1.3s median latency. I owned the deployment end-to-end: solution design, tool/API integration with enterprise systems, evaluation harness, monitoring, and CI/CD.",
     image: "/projects/voice-agent-architecture.svg",
     tags: ["AI", "Voice AI", "LLM", "REST APIs", "Evals", "Backend"],
+    links: {}
+  },
+  {
+    id: "p3",
+    title: "arte — Typewriter Literary Rendering",
+    description: "An image and a full book go in; a piece of physical art comes out. The tool maps a novel's characters onto an image grid — Floyd–Steinberg dithering, adaptive thresholds matching the image histogram to the text's character-weight distribution — consuming the text strictly sequentially, never reordering a single letter. It then emits vector stencil PDFs at true physical scale, auto-tiled across A2/A1/A0 sheets for laser cutting.",
+    tags: ["Tools", "Python", "NumPy", "Pillow", "ReportLab", "Imaging"],
     links: {}
   },
   {
@@ -44,7 +51,7 @@ const allProjects: Project[] = [
   }
 ];
 
-const filters = ["All", "AI", "Frontend", "Backend"] as const;
+const filters = ["All", "AI", "Backend", "Tools"] as const;
 
 export function Projects() {
   const [active, setActive] = useState<(typeof filters)[number]>("All");
@@ -87,6 +94,7 @@ export function Projects() {
                 <Parallax>
                   <Tilt>
                     <Card className="overflow-hidden group neon-shadow border neon-border bg-[--surface-muted]">
+                      {project.image && (
                       <div className="bg-[--surface-muted]">
                         {project.image.toLowerCase().endsWith(".mp4") ? (
                           <video
@@ -111,6 +119,7 @@ export function Projects() {
                           </>
                         )}
                       </div>
+                      )}
                       <CardHeader>
                         <CardTitle>{project.title}</CardTitle>
                       </CardHeader>

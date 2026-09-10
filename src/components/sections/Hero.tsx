@@ -33,7 +33,7 @@ export function Hero() {
             </p>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
             <span className="block">Hi, I&apos;m Federico.</span>
-            <span className="block">I build AI systems that work in production.</span>
+            <span className="block">Physicist by training, engineer by trade.</span>
             </h1>
             <p className="text-zinc-600 dark:text-zinc-400 max-w-prose">
               I design, deploy, and scale agentic AI systems for enterprise customers — from
