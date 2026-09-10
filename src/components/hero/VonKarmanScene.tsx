@@ -1,8 +1,11 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useState, useCallback } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { InfoTooltip } from "./InfoTooltip";
+
+const DEFAULT_RE = 150;
 
 interface Particle {
   position: THREE.Vector3;
@@ -11,17 +14,38 @@ interface Particle {
   maxAge: number;
 }
 
-function VonKarmanParticles() {
+function vortexStrengthForRe(re: number): number {
+  if (re < 40) return 0;
+  if (re <= DEFAULT_RE) return 8.0 * (re - 40) / (DEFAULT_RE - 40);
+  return 8.0 + Math.min(12.0, (re - DEFAULT_RE) / 100);
+}
+
+function turbulenceForRe(re: number): number {
+  if (re < 40) return 0;
+  if (re <= 200) return 0.5 * (re - 40) / 160;
+  return 0.5 + 2.5 * Math.min(1, (re - 200) / 1300);
+}
+
+function reRegime(re: number): string {
+  if (re < 40) return "laminar";
+  if (re < 300) return "vortex shedding";
+  return "turbulent";
+}
+
+function VonKarmanParticles({ re }: { re: number }) {
   const particlesRef = useRef<THREE.Points>(null);
-  const particleCount = 50000; // Dense smoke-like visualization
+  const particleCount = 50000;
+
+  // Sync prop to ref so useFrame always reads the current value.
+  const reRef = useRef(re);
+  reRef.current = re;
 
   const particles = useRef<Particle[]>([]);
 
-  // Initialize particles
   useMemo(() => {
     particles.current = Array.from({ length: particleCount }, () => ({
       position: new THREE.Vector3(
-        Math.random() * 42 - 12, // Extended range to show more of wake
+        Math.random() * 42 - 12,
         Math.random() * 20 - 10,
         Math.random() * 2 - 1
       ),
@@ -45,49 +69,35 @@ function VonKarmanParticles() {
     if (!particlesRef.current) return;
 
     const time = state.clock.getElapsedTime();
-    const posAttribute = particlesRef.current.geometry.attributes.position;
+    const posArray = particlesRef.current.geometry.attributes.position.array as Float32Array;
+    const currentRe = reRef.current;
+    const vortexStrength = vortexStrengthForRe(currentRe);
+    const turbulenceAmp = turbulenceForRe(currentRe);
+
+    const flowSpeed = 2.0;
+    const obstacleX = -8;
+    const obstacleRadius = 1.0;
+    const sheddingFrequency = (0.21 * flowSpeed) / (2 * obstacleRadius);
 
     particles.current.forEach((p, i) => {
-      // von Kármán vortex street simulation with proper physics
-      const flowSpeed = 2.0; // Free stream velocity
       const x = p.position.x;
       const y = p.position.y;
-
-      // Cylinder obstacle at left side
-      const obstacleX = -8;
-      const obstacleY = 0;
-      const obstacleRadius = 1.0;
-
       const dx = x - obstacleX;
-      const dy = y - obstacleY;
+      const dy = y; // obstacleY = 0
       const distToObstacle = Math.sqrt(dx * dx + dy * dy);
 
-      // Base flow (left to right)
       let vx = flowSpeed;
       let vy = 0;
 
-      // Strouhal number for vortex shedding frequency
-      // St ≈ 0.2 for cylinders at moderate Re
-      const strouhalNumber = 0.21;
-      const sheddingFrequency = (strouhalNumber * flowSpeed) / (2 * obstacleRadius);
-
-      // Create alternating vortex street behind cylinder
-      if (x > obstacleX) {
+      if (x > obstacleX && vortexStrength > 0) {
         const behindCylinder = x - obstacleX;
-
-        // Vortex spacing (wavelength) - typically 5-6 diameters
         const vortexSpacing = 5.0 * obstacleRadius;
-
-        // Calculate which vortex pair we're near
         const vortexPhase = (behindCylinder / vortexSpacing) * Math.PI * 2;
         const timePhase = time * sheddingFrequency * Math.PI * 2;
 
-        // Create multiple vortex centers with alternating rotation
         for (let n = 0; n < 6; n++) {
           const vortexXOffset = n * vortexSpacing + (time * flowSpeed * 0.3);
           const vortexX = obstacleX + (vortexXOffset % (6 * vortexSpacing));
-
-          // Alternate vortices above and below centerline
           const vortexYOffset = 1.2 * obstacleRadius;
           const isUpperVortex = n % 2 === 0;
           const vortexY = isUpperVortex ? vortexYOffset : -vortexYOffset;
@@ -97,90 +107,70 @@ function VonKarmanParticles() {
           const distToVortex = Math.sqrt(dvx * dvx + dvy * dvy);
           const vortexCoreRadius = 1.5 * obstacleRadius;
 
-          if (distToVortex < vortexCoreRadius * 3) {
-            // Rankine vortex model
-            const vortexStrength = 8.0;
+          if (distToVortex < vortexCoreRadius * 3 && distToVortex > 0) {
             const circulation = isUpperVortex ? -vortexStrength : vortexStrength;
-
-            let tangentialVel;
+            let tangentialVel: number;
             if (distToVortex < vortexCoreRadius) {
-              // Solid body rotation in core
               tangentialVel = circulation * distToVortex / (vortexCoreRadius * vortexCoreRadius);
             } else {
-              // Potential flow outside core
               tangentialVel = circulation / distToVortex;
             }
-
-            // Decay with distance from cylinder
             const decay = Math.exp(-behindCylinder * 0.08);
             tangentialVel *= decay;
-
-            // Add tangential velocity (perpendicular to radius)
             vx += -dvy / distToVortex * tangentialVel;
             vy += dvx / distToVortex * tangentialVel;
           }
         }
 
-        // Add wake turbulence
         if (Math.abs(y) < 3 * obstacleRadius) {
-          const turbulence = Math.sin(timePhase + vortexPhase * 2) * 0.5;
+          const turbulence = Math.sin(timePhase + vortexPhase * 2) * turbulenceAmp;
           const turbulenceDecay = Math.exp(-behindCylinder * 0.1);
           vy += turbulence * turbulenceDecay;
         }
       }
 
-      // Flow around obstacle (potential flow)
       if (distToObstacle < obstacleRadius * 4) {
         const r2 = dx * dx + dy * dy;
         const a2 = obstacleRadius * obstacleRadius;
-
         if (distToObstacle > obstacleRadius) {
-          // Potential flow around cylinder
           const factor = a2 / r2;
           vx = vx * (1 - factor * (dx * dx / r2)) - vy * factor * (dx * dy / r2);
           vy = vy * (1 - factor * (dy * dy / r2)) - vx * factor * (dx * dy / r2);
         }
       }
 
-      // Strong repulsion from obstacle
-      if (distToObstacle < obstacleRadius * 1.3) {
+      if (distToObstacle < obstacleRadius * 1.3 && distToObstacle > 0) {
         const repelForce = (obstacleRadius * 1.3 - distToObstacle) * 5;
         vx += (dx / distToObstacle) * repelForce;
         vy += (dy / distToObstacle) * repelForce;
       }
 
-      // Update position with slower time step for better vortex formation
-      const dt = 0.008; // Reduced from 0.016 to slow down dynamics by 50%
+      const dt = 0.008;
       p.position.x += vx * dt;
       p.position.y += vy * dt;
-
-      // Age particles
       p.age += 1;
 
-      // Reset particles that flow off screen or are too old
       if (p.position.x > 30 || p.position.x < -12 ||
           p.position.y > 10 || p.position.y < -10 ||
           p.age > p.maxAge) {
-        // Respawn at left side with uniform flow distribution across full height
         p.position.x = -12 + Math.random() * 0.5;
-        p.position.y = (Math.random() - 0.5) * 20; // Full y-axis coverage from -10 to +10
+        p.position.y = (Math.random() - 0.5) * 20;
         p.position.z = (Math.random() - 0.5) * 1.5;
         p.age = 0;
-        p.maxAge = 600 + Math.random() * 300; // Extended lifetime so particles travel farther
+        p.maxAge = 600 + Math.random() * 300;
       }
 
-      // Update geometry
-      posAttribute.array[i * 3] = p.position.x;
-      posAttribute.array[i * 3 + 1] = p.position.y;
-      posAttribute.array[i * 3 + 2] = p.position.z;
+      posArray[i * 3] = p.position.x;
+      posArray[i * 3 + 1] = p.position.y;
+      posArray[i * 3 + 2] = p.position.z;
     });
 
-    posAttribute.needsUpdate = true;
+    particlesRef.current.geometry.attributes.position.needsUpdate = true;
   });
 
   const geometry = useMemo(() => {
     const geom = new THREE.BufferGeometry();
-    geom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geom.setAttribute("position", new THREE.BufferAttribute(positions, 3));
     return geom;
   }, [positions]);
 
@@ -198,29 +188,50 @@ function VonKarmanParticles() {
   );
 }
 
-function Cylinder() {
-  // Hidden for now - will be re-enabled later
-  return null;
-
-  // return (
-  //   <group position={[-8, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
-  //     {/* Circular edge outline */}
-  //     <mesh>
-  //       <torusGeometry args={[1.0, 0.03, 16, 64]} />
-  //       <meshBasicMaterial color="#ffffff" />
-  //     </mesh>
-  //   </group>
-  // );
-}
-
 export function VonKarmanScene() {
+  const [re, setRe] = useState(DEFAULT_RE);
+  const reset = useCallback(() => setRe(DEFAULT_RE), []);
+
   return (
-    <Canvas
-      camera={{ position: [2, 0, 12], fov: 65 }}
-      style={{ background: "#000000" }}
-    >
-      <Cylinder />
-      <VonKarmanParticles />
-    </Canvas>
+    <div className="absolute inset-0" onDoubleClick={reset}>
+      <Canvas
+        camera={{ position: [2, 0, 12], fov: 65 }}
+        style={{ background: "#000000" }}
+      >
+        <VonKarmanParticles re={re} />
+      </Canvas>
+
+      {/* Parameter control bar — stop propagation so double-click here doesn't reset */}
+      <div
+        className="absolute bottom-0 inset-x-0 z-10 flex items-center gap-2 px-3 py-2 bg-black/50 backdrop-blur-sm"
+        onDoubleClick={e => e.stopPropagation()}
+      >
+        <InfoTooltip text="A classic pattern in fluid dynamics — alternating vortices that form behind a cylindrical obstacle as fluid flows past it. The Reynolds number controls whether the flow stays smooth, sheds vortices periodically, or becomes turbulent." />
+        <span className="text-[10px] font-mono text-zinc-500 whitespace-nowrap select-none">von Kármán</span>
+        <span className="text-zinc-700 text-[10px] select-none">·</span>
+        <span className="text-[10px] font-mono text-zinc-400 whitespace-nowrap select-none">
+          Re = {re} <span className="text-zinc-600">({reRegime(re)})</span>
+        </span>
+        <input
+          type="range"
+          min={10}
+          max={1500}
+          step={10}
+          value={re}
+          onChange={e => setRe(Number(e.target.value))}
+          className="flex-1 h-1 accent-sky-400 cursor-pointer"
+          title="Re — Reynolds number. Controls the transition from smooth flow to vortex shedding to turbulence."
+          aria-label="Reynolds number"
+        />
+        <button
+          onClick={reset}
+          className="text-zinc-500 hover:text-white transition-colors text-sm leading-none select-none"
+          title="Reset to default (Re = 150)"
+          aria-label="Reset Reynolds number to default"
+        >
+          ↺
+        </button>
+      </div>
+    </div>
   );
 }

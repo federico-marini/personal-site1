@@ -24,9 +24,9 @@ const display = Bricolage_Grotesque({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Federico Marini | Engineer, Physicist & AI Founder | Rome/Paris",
+  title: "Federico Marini | Forward Deployed Engineer, Applied AI | Rome/Paris",
   description:
-    "Federico Marini - Forward Deployed Engineer at Wonderful AI, Founder of IncognitoAI. Physicist turned engineer building production AI systems, enterprise integrations, and privacy-preserving LLM solutions. Based in Rome/Paris.",
+    "Federico Marini - Forward Deployed Engineer at Wonderful AI. I design, deploy, and scale agentic AI systems for enterprise customers, including a telecom voice agent handling 100K+ calls/day at 75% containment. Physicist by training. Rome / Paris, available in Milan.",
   keywords: [
     "Federico Marini",
     "Forward Deployed Engineer",
@@ -35,6 +35,10 @@ export const metadata: Metadata = {
     "Wonderful AI",
     "AI",
     "Machine Learning",
+    "Agentic AI",
+    "Voice AI",
+    "Enterprise AI",
+    "Milan",
     "Privacy AI",
     "LLM",
     "Rome",
@@ -46,9 +50,9 @@ export const metadata: Metadata = {
   creator: "Federico Marini",
   publisher: "Federico Marini",
   openGraph: {
-    title: "Federico Marini | Engineer, Physicist & AI Founder",
+    title: "Federico Marini | Forward Deployed Engineer, Applied AI",
     description:
-      "Forward Deployed Engineer at Wonderful AI & Founder of IncognitoAI. Building production AI agents, enterprise integrations, and privacy-preserving LLM solutions.",
+      "Forward Deployed Engineer at Wonderful AI. Designing, deploying, and scaling agentic AI systems for enterprise — architecture, evaluation, and production.",
     type: "website",
     locale: "en_US",
     url: siteUrl,
@@ -66,7 +70,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Federico Marini | Engineer & AI Founder",
     description:
-      "Forward Deployed Engineer at Wonderful AI & Founder of IncognitoAI. Building production AI agents, enterprise integrations, and privacy-preserving LLM solutions.",
+      "Forward Deployed Engineer at Wonderful AI. Designing, deploying, and scaling agentic AI systems for enterprise — architecture, evaluation, and production.",
     images: ["/opengraph-image"],
     creator: "@federicomarini",
   },

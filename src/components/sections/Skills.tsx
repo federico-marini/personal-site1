@@ -3,27 +3,31 @@ import { Parallax, Reveal } from "@/components/motion/scroll";
 
 const groups = [
   {
-    title: "Languages",
-    items: ["Python", "C#", "SQL", "TypeScript"],
-  },
-  {
-    title: "Frameworks",
-    items: ["FastAPI", ".NET Core", "Next.js", "React"],
-  },
-  {
-    title: "Data & AI",
+    title: "Applied AI",
     items: [
-      "Pandas",
-      "NumPy",
-      "Scikit-Learn",
-      "FAISS",
-      "HuggingFace",
+      "LLM agents",
+      "Voice AI",
+      "Evals",
+      "Tool use",
+      "RAG (Qdrant)",
+      "Agent orchestration",
+      "Multi-skill routing",
+      "Claude (Sonnet, Opus, Haiku)",
+      "OpenAI (Realtime, GPT-5)",
+      "Gemini Live",
     ],
   },
-  { title: "Infrastructure", items: ["Docker", "Vercel", "PostgreSQL", "PostGIS", "Redis", "AWS"] },
   {
-    title: "Tools",
-    items: ["VSCode", "DBeaver", "GitHub Actions", "Power BI", "QGIS"],
+    title: "Backend & APIs",
+    items: ["Python", "FastAPI", "C#", ".NET Core", "REST APIs", "TypeScript", "Next.js", "React"],
+  },
+  {
+    title: "Data & Infrastructure",
+    items: ["PostgreSQL", "PostGIS", "Redis", "Docker", "AWS", "Vercel", "CI/CD", "GitHub Actions"],
+  },
+  {
+    title: "Scientific Computing",
+    items: ["HPC", "Distributed computing", "NumPy", "Pandas", "Scikit-Learn", "FAISS", "HuggingFace"],
   },
 ];
 

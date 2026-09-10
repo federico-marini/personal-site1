@@ -29,15 +29,17 @@ export function Hero() {
             className="space-y-6"
           >
             <p className="text-sm uppercase tracking-widest text-zinc-500">
-              Engineer & Founder
+              Forward Deployed Engineer · Applied AI
             </p>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
             <span className="block">Hi, I&apos;m Federico.</span>
-            <span className="block">I build things that work.</span>
+            <span className="block">I build AI systems that work in production.</span>
             </h1>
             <p className="text-zinc-600 dark:text-zinc-400 max-w-prose">
-              Physics background, engineering practice. I deploy AI agents in production,
-              design data pipelines, and ship software that solves real problems.
+              I design, deploy, and scale agentic AI systems for enterprise customers — from
+              technical discovery and architecture through evaluation and production. Currently
+              a Forward Deployed Engineer at Wonderful AI. Physicist by training, with earlier
+              work in HPC and polymer dynamics.
             </p>
             <div className="flex items-center gap-3">
             <Button variant="secondary" asChild className="border neon-border">
@@ -64,13 +66,6 @@ export function Hero() {
             >
               <Repeat className="h-4 w-4 text-white/70 group-hover:text-white group-hover:rotate-180 transition-all duration-300" />
             </button>
-
-            {/* Info label */}
-            <div className="absolute bottom-3 right-3 text-xs text-zinc-500 dark:text-zinc-400 bg-black/50 px-2 py-1 rounded backdrop-blur-sm">
-              {simulation === "vonkarman"
-                ? "von Kármán Vortex Street (Three.js/TSX)"
-                : "Lorenz Attractor - Chaos Theory (Three.js/TSX)"}
-            </div>
           </motion.div>
         </div>
       </div>

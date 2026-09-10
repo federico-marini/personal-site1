@@ -2,48 +2,6 @@
 
 import { Card } from "@/components/ui/card";
 import { Reveal, Parallax } from "@/components/motion/scroll";
-import { useEffect, useRef, useState } from "react";
-import { useInView, useMotionValue, animate } from "framer-motion";
-
-function AnimatedNumber({ value, suffix = "+", duration = 1.2 }: { value: number; suffix?: string; duration?: number }) {
-  const ref = useRef<HTMLSpanElement | null>(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-  const motionValue = useMotionValue(0);
-  const [displayValue, setDisplayValue] = useState(0);
-
-  useEffect(() => {
-    if (!isInView) return;
-    const controls = animate(motionValue, value, {
-      duration,
-      ease: "easeOut",
-    });
-    const unsubscribe = motionValue.on("change", (latest) => {
-      setDisplayValue(Math.floor(latest));
-    });
-    return () => {
-      controls.stop();
-      unsubscribe();
-    };
-  }, [isInView, motionValue, value, duration]);
-
-  return (
-    <span ref={ref} className="inline-flex items-baseline">
-      {displayValue}
-      {suffix && <span aria-hidden className="ml-0.5">{suffix}</span>}
-    </span>
-  );
-}
-
-function StatCard({ value, label }: { value: number; label: string }) {
-  return (
-    <div className="rounded-xl border neon-border bg-[--surface-muted] neon-shadow px-6 py-6 text-center">
-      <div className="text-4xl sm:text-5xl font-bold" style={{ color: "var(--accent)" }}>
-        <AnimatedNumber value={value} />
-      </div>
-      <div className="mt-2 text-base text-zinc-600 dark:text-zinc-400">{label}</div>
-    </div>
-  );
-}
 
 export function About() {
   return (
@@ -64,7 +22,7 @@ export function About() {
             <Card className="overflow-hidden h-64 sm:h-80 md:h-96 neon-shadow border neon-border bg-[--surface-muted]">
               <div className="relative w-full h-full">
                 <img
-                  src="/IMG_7947 2.jpeg"
+                  src="/federico-marini.jpg"
                   alt="Federico Marini"
                   className="w-full h-full object-cover"
                 />
@@ -77,21 +35,22 @@ export function About() {
             </Reveal>
             <Reveal delay={0.05}>
               <p className="text-zinc-600 dark:text-zinc-400">
-              I studied physics — modeling systems, running simulations, learning to reason
-              from first principles. Now I apply that to engineering. At Wonderful AI I deploy
-              production AI agents for enterprise clients, building the middleware between
-              LLM systems and real business operations. On the side, I founded IncognitoAI,
-              a privacy layer for generative AI. I care about software that actually works
-              in production, not just in demos.
+              I studied physics — modeling complex systems, running large-scale simulations,
+              and learning to reason from first principles. Today I apply that mindset as a
+              Forward Deployed Engineer at Wonderful AI, where I&apos;m embedded with enterprise
+              customers to scope, architect, deploy, and evaluate production AI systems.
+              I&apos;ve worked across customer-facing voice agents and back-office automation,
+              including scaling a telecom voice agent to 100,000+ calls per day. Previously I
+              built enterprise data products at Deloitte and founded IncognitoAI, a privacy
+              layer for generative AI.
+              I like working at the boundary between customers and engineering: understanding a
+              real operational problem, designing the system, and getting it to work reliably
+              in production. Most of my recent code lives in private enterprise repos under
+              NDA — for context on style and approach, see the projects and published physics
+              paper below.
               </p>
             </Reveal>
-            <Reveal delay={0.1}>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <StatCard value={3} label="Years of Experience" />
-                <StatCard value={10} label="Projects Completed" />
-                <StatCard value={1} label="Research Papers" />
-              </div>
-            </Reveal>
+
           </div>
         </div>
       </div>

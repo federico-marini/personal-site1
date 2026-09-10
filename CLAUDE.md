@@ -37,7 +37,8 @@ Personal portfolio site for Federico Marini — built with Next.js 15 (App Route
 - **Path alias:** `@/*` maps to `./src/*`
 - **TypeScript:** Strict mode
 - **MDX:** Configured in `next.config.ts` with rehype-pretty-code and remark-gfm
-- **Deployment:** GitHub Actions → GitHub Pages (static export to `/out`)
+- **Deployment:** Vercel, via its GitHub integration. Pushing to `main` triggers a Production deploy (federicomarini.dev); PRs get Preview deploys.
+  - Note: `.github/workflows/deploy.yml` (GitHub Pages) is dead — GitHub Pages is not enabled on the repo and the workflow has failed on every run since Oct 2025 (it uploads `./out`, which this build never produces since `next.config.ts` sets no `output: "export"`). It does not affect the live site.
 
 ## Environment Variables
 

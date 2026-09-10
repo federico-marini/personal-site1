@@ -19,9 +19,17 @@ type Project = {
 
 const allProjects: Project[] = [
   {
+    id: "p0",
+    title: "Enterprise Voice Agent",
+    description: "Production agentic voice system deployed for a major telecom. Scaled to 100K+ inbound calls/day with 75% containment and 1.3s median latency. I owned the deployment end-to-end: solution design, tool/API integration with enterprise systems, evaluation harness, monitoring, and CI/CD.",
+    image: "/projects/voice-agent-architecture.svg",
+    tags: ["AI", "Voice AI", "LLM", "REST APIs", "Evals", "Backend"],
+    links: {}
+  },
+  {
     id: "p1",
     title: "IncognitoAI",
-    description: "A secure proxy for LLMs that anonymizes and re-injects sensitive data using custom regex NER before inference. Privacy by architecture — no sensitive tokens ever leave the company perimeter.",
+    description: "A privacy proxy for LLMs that detects and anonymizes PII before inference. Uses a fine-tuned Llama 3B for entity recognition, with regex pre-filters for structured patterns. Sensitive tokens are replaced before reaching third-party LLM providers and re-injected in the response.",
     image: "/projects/incognitoai-logo.svg",
     tags: ["AI", "FastAPI", "Docker", "Redis", "FAISS", "Backend"],
     links: { demo: "https://www.incognitoai.eu/" }

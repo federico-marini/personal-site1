@@ -7,21 +7,21 @@ export function Experience() {
       company: "Wonderful AI",
       period: "2026 – Present",
       desc:
-        "Design and deploy production AI agents (voice and chat) for enterprise clients. Build backend middleware and REST APIs integrating LLM systems with client databases and external services. Contribute to model pipelines, benchmarking and evaluation frameworks.",
+        "Embedded with enterprise clients to scope agentic AI use cases and own deployments end-to-end across solution design, integrations, evaluation, monitoring, and CI/CD. For a major telecom, designed and scaled a customer-facing voice agent to 100,000+ calls/day in three months, achieving 75% containment and 1.3s median latency.",
     },
     {
       role: "Data Scientist",
       company: "Deloitte Business Solutions",
-      period: "2025",
+      period: "May 2025 – December 2025",
       desc:
         "Built an automated real-estate valuation engine, managing backend logic, pricing algorithms, and ETL pipelines for geo-spatial data. Developed Python + PostgreSQL pipelines integrating enterprise data from 30+ plants worldwide to power live C-level dashboards.",
     },
     {
       role: "Founder",
       company: "IncognitoAI",
-      period: "2025 – Present",
+      period: "March 2025 – July 2026",
       desc:
-        "Built a proxy system that anonymizes PII in GenAI prompts using open-source models. Led product vision and early sales. Won July Demo Day, secured €18k public grant.",
+        "Built a proxy system that anonymizes PII in GenAI prompts using open-source models. Led product vision and early sales. Won July Demo Day, secured €20k in public grants.",
     },
     {
       role: "Researcher",
