@@ -13,6 +13,7 @@ type Project = {
   title: string;
   description: string;
   image?: string;
+  credit?: string;
   tags: string[];
   links?: { demo?: string; github?: string };
 };
@@ -29,7 +30,9 @@ const allProjects: Project[] = [
   {
     id: "p3",
     title: "arte — Typewriter Literary Rendering",
-    description: "An image and a full book go in; a piece of physical art comes out. The tool maps a novel's characters onto an image grid — Floyd–Steinberg dithering, adaptive thresholds matching the image histogram to the text's character-weight distribution — consuming the text strictly sequentially, never reordering a single letter. It then emits vector stencil PDFs at true physical scale, auto-tiled across A2/A1/A0 sheets for laser cutting.",
+    description: "An image and a full book go in; a piece of physical art comes out. The tool maps a novel's characters onto an image grid — Floyd–Steinberg dithering, adaptive thresholds matching the image histogram to the text's character-weight distribution — consuming the text strictly sequentially, never reordering a single letter. Zoom in and it's readable Melville. It then emits vector stencil PDFs at true physical scale, auto-tiled across A2/A1/A0 sheets for laser cutting.",
+    image: "/projects/arte-typewriter.jpg",
+    credit: "Rendered from Moby-Dick (1851) over a public-domain humpback photograph — NOAA / National Marine Sanctuaries.",
     tags: ["Tools", "Python", "NumPy", "Pillow", "ReportLab", "Imaging"],
     links: {}
   },
@@ -127,6 +130,9 @@ export function Projects() {
                         <p className="text-sm text-zinc-600 dark:text-zinc-400">
                           {project.description}
                         </p>
+                        {project.credit && (
+                          <p className="mt-2 text-xs text-zinc-500">{project.credit}</p>
+                        )}
                         <div className="mt-3 flex flex-wrap gap-2">
                           {project.tags.map((t) => (
                             <Badge key={t} variant="secondary">
