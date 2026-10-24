@@ -17,6 +17,8 @@
   --accent-foreground: #0a0a0a;
   --surface: #ffffff;
   --surface-muted: #f8fafc;
+  /* zinc-700 on white is ~10.4:1 — small tracked labels need more than zinc-500 (~4.6:1, and less on the hero wash). */
+  --muted-foreground: #3f3f46;
   --border-color: rgba(0,0,0,0.08);
   --particle: rgba(31, 72, 126, 0.35);
 
@@ -31,6 +33,7 @@
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-muted-foreground: var(--muted-foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-display: var(--font-display, var(--font-geist-sans));
@@ -43,6 +46,8 @@
   --accent-foreground: #0a0a0a;
   --surface: rgba(10,10,10,0.6);
   --surface-muted: rgba(16,16,16,0.6);
+  /* zinc-300 on the near-black background stays muted and clears WCAG AA for small labels. */
+  --muted-foreground: #d4d4d8;
   --border-color: rgba(255,255,255,0.12);
   --particle: rgba(56, 189, 248, 0.7);
 }
@@ -64,6 +69,17 @@ h1, h2, h3, h4 {
 
 html:focus-within {
   scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  .reveal-in {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 /* Section spacing helpers */

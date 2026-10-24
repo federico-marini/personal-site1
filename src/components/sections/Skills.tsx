@@ -42,7 +42,7 @@ export function Skills() {
           {groups.map((group, i) => (
             <Reveal key={group.title} delay={i * 0.05}>
               <Parallax className="space-y-4">
-                <h3 className="text-sm uppercase tracking-wider text-zinc-500">
+                <h3 className="text-sm font-medium uppercase tracking-wider text-muted-foreground">
                   {group.title}
                 </h3>
                 <div className="flex flex-wrap gap-2">
