@@ -49,7 +49,7 @@ export function Experience() {
                   <h3 className="font-semibold">
                     {item.role}, {item.company}
                   </h3>
-                  <time className="block text-xs text-zinc-500">{item.period}</time>
+                  <time className="block text-xs text-muted-foreground">{item.period}</time>
                   <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
                     {item.desc}
                   </p>

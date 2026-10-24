@@ -52,7 +52,7 @@ export default function AboutPage() {
         </div>
 
         <Reveal>
-          <p className="text-sm uppercase tracking-widest text-zinc-500 mb-3">
+          <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground mb-3">
             Forward Deployed Engineer · Applied AI
           </p>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6">
@@ -125,7 +125,7 @@ export default function AboutPage() {
                   <span className="font-medium text-foreground">
                     {item.role}, {item.company}
                   </span>
-                  <span className="text-xs text-zinc-500">{item.period}</span>
+                  <span className="text-xs text-muted-foreground">{item.period}</span>
                 </li>
               ))}
             </ul>

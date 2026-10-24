@@ -131,7 +131,7 @@ export function Projects() {
                           {project.description}
                         </p>
                         {project.credit && (
-                          <p className="mt-2 text-xs text-zinc-500">{project.credit}</p>
+                          <p className="mt-2 text-xs text-muted-foreground">{project.credit}</p>
                         )}
                         <div className="mt-3 flex flex-wrap gap-2">
                           {project.tags.map((t) => (

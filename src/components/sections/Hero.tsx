@@ -28,7 +28,7 @@ export function Hero() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="space-y-6"
           >
-            <p className="text-sm uppercase tracking-widest text-zinc-500">
+            <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
               Forward Deployed Engineer · Applied AI
             </p>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">

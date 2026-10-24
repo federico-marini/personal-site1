@@ -17,7 +17,7 @@ export function Metrics() {
                 <div className="text-4xl sm:text-5xl font-bold tracking-tight text-[--accent]">
                   {m.value}
                 </div>
-                <div className="mt-2 text-sm uppercase tracking-wider text-zinc-500">
+                <div className="mt-2 text-sm font-medium uppercase tracking-wider text-muted-foreground">
                   {m.label}
                 </div>
               </div>
