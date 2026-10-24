@@ -6,6 +6,8 @@ import "./globals.css";
 import { Providers } from "@/app/providers";
 import { Navbar } from "@/components/ui/navbar";
 import { Footer } from "@/components/layout/Footer";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { personSchema, websiteSchema } from "@/lib/schema";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,7 +26,7 @@ const display = Bricolage_Grotesque({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Federico Marini | Forward Deployed Engineer, Applied AI | Rome/Paris",
+  title: "FD at Wonderful | R | physicist | founder",
   description:
     "Federico Marini - Forward Deployed Engineer at Wonderful AI. I design, deploy, and scale agentic AI systems for enterprise customers, including a telecom voice agent handling 100K+ calls/day at 75% containment. Physicist by training. Rome / Paris, available in Milan.",
   keywords: [
@@ -50,7 +52,7 @@ export const metadata: Metadata = {
   creator: "Federico Marini",
   publisher: "Federico Marini",
   openGraph: {
-    title: "Federico Marini | Forward Deployed Engineer, Applied AI",
+    title: "FD at Wonderful | R | physicist | founder",
     description:
       "Forward Deployed Engineer at Wonderful AI. Designing, deploying, and scaling agentic AI systems for enterprise — architecture, evaluation, and production.",
     type: "website",
@@ -68,7 +70,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Federico Marini | Engineer & AI Founder",
+    title: "FD at Wonderful | R | physicist | founder",
     description:
       "Forward Deployed Engineer at Wonderful AI. Designing, deploying, and scaling agentic AI systems for enterprise — architecture, evaluation, and production.",
     images: ["/opengraph-image"],
@@ -102,6 +104,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} ${display.variable} antialiased`}>
+        {/* React 19 hoists this <link> into <head>; points LLM agents to /llms.txt */}
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+        <JsonLd data={personSchema()} />
+        <JsonLd data={websiteSchema()} />
         <Providers>
           <Navbar />
           {children}

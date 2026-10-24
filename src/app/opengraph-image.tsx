@@ -33,10 +33,10 @@ export default function Image() {
               textShadow: "0 6px 30px rgba(56,189,248,0.35)",
             }}
           >
-            Valerio Mannucci
+            Federico Marini
           </div>
           <div style={{ fontSize: 28, color: "#cbd5e1" }}>
-            AI Developer
+            Forward Deployed Engineer · Applied AI
           </div>
         </div>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -50,9 +50,9 @@ export default function Image() {
                 boxShadow: "0 0 20px rgba(56,189,248,0.5)",
               }}
             />
-            vale.dev
+            federicomarini.dev
           </div>
-          <div style={{ fontSize: 22, color: "#93c5fd" }}>AI • Next.js • DX</div>
+          <div style={{ fontSize: 22, color: "#93c5fd" }}>Rome · Paris</div>
         </div>
       </div>
     ),

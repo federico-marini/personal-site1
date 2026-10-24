@@ -16,7 +16,7 @@ Personal portfolio site for Federico Marini — built with Next.js 15 (App Route
 
 ## Architecture
 
-**Routing:** Next.js App Router. The homepage (`src/app/page.tsx`) composes section components into a single-page layout with anchor navigation. Blog posts are MDX files at `src/app/blog/[slug]/page.mdx`.
+**Routing:** Next.js App Router. The homepage (`src/app/page.tsx`) composes section components into a single-page layout with anchor navigation. `/about` (`src/app/about/page.tsx`) is a draft page: noindex, excluded from the sitemap and nav.
 
 **Sections** (`src/components/sections/`): Hero, About, Skills, Projects, Experience, Contact — each a self-contained component with its own data hardcoded inline.
 
@@ -30,19 +30,17 @@ Personal portfolio site for Federico Marini — built with Next.js 15 (App Route
 
 **Forms:** Contact form uses react-hook-form + Zod validation. API route at `src/app/api/contact/route.ts` sends email via Resend.
 
-**Blog:** Toggled by `NEXT_PUBLIC_BLOG_ENABLED` (on in dev, off in production). Posts listed manually in `src/app/blog/page.tsx`. MDX components mapped in `src/mdx-components.tsx`.
+**Structured data:** JSON-LD via `src/components/seo/JsonLd.tsx` with builders in `src/lib/schema.ts` (Person + WebSite in the root layout, BreadcrumbList on internal pages).
 
 ## Key Config
 
 - **Path alias:** `@/*` maps to `./src/*`
 - **TypeScript:** Strict mode
-- **MDX:** Configured in `next.config.ts` with rehype-pretty-code and remark-gfm
 - **Deployment:** Vercel, via its GitHub integration. Pushing to `main` triggers a Production deploy (federicomarini.dev); PRs get Preview deploys.
   - Note: `.github/workflows/deploy.yml` (GitHub Pages) is dead — GitHub Pages is not enabled on the repo and the workflow has failed on every run since Oct 2025 (it uploads `./out`, which this build never produces since `next.config.ts` sets no `output: "export"`). It does not affect the live site.
 
 ## Environment Variables
 
 - `NEXT_PUBLIC_SITE_URL` — Base URL for sitemap/metadata
-- `NEXT_PUBLIC_BLOG_ENABLED` — Toggle blog visibility
 - `RESEND_API_KEY` — Contact form email delivery
 - `RESEND_FROM` — Email sender address

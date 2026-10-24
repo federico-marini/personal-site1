@@ -76,12 +76,6 @@ section {
   background: color-mix(in oklab, var(--accent) 25%, transparent);
 }
 
-/* Prose styles for blog content */
-.prose {
-  --tw-prose-body: var(--foreground);
-  --tw-prose-headings: var(--foreground);
-}
-
 /* Neon helpers */
 .neon-shadow {
   box-shadow: 0 0 32px rgba(56, 189, 248, 0.15);
