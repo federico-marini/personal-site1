@@ -1,0 +1,40 @@
+# Federico Marini
+
+> Federico Marini is a Forward Deployed Engineer at Wonderful AI who designs, deploys, and scales agentic AI systems for enterprise customers. Physicist by training, with earlier work in HPC and polymer dynamics. Based in Rome and Paris, available in Milan.
+
+This file summarizes the content of https://federicomarini.dev for language models. All facts below come from the site itself.
+
+## Key facts
+
+- Current role: Forward Deployed Engineer, Wonderful AI (2026 – present)
+- Focus: applied AI for enterprise — technical discovery, architecture, evaluation, and production deployment of agentic AI systems, across customer-facing voice agents and back-office automation
+- Highlight: designed and scaled a customer-facing voice agent for a major telecom to 100,000+ calls/day in three months, with 75% containment and 1.3s median latency
+- Background: physicist by training (complex-systems modeling, large-scale simulations, HPC)
+- Location: Rome / Paris, available in Milan
+
+## Skills
+
+- Applied AI: LLM agents, voice AI, evals, tool use, RAG (Qdrant), agent orchestration, multi-skill routing, Claude, OpenAI (Realtime, GPT-5), Gemini Live
+- Backend & APIs: Python, FastAPI, C#, .NET Core, REST APIs, TypeScript, Next.js, React
+- Data & infrastructure: PostgreSQL, PostGIS, Redis, Docker, AWS, Vercel, CI/CD, GitHub Actions
+- Scientific computing: HPC, distributed computing, NumPy, Pandas, Scikit-Learn, FAISS, HuggingFace
+
+## Experience
+
+- Forward Deployed Engineer, Wonderful AI (2026 – present): embedded with enterprise clients to scope agentic AI use cases and own deployments end-to-end — solution design, integrations, evaluation, monitoring, and CI/CD.
+- Data Scientist, Deloitte Business Solutions (May 2025 – December 2025): built an automated real-estate valuation engine (backend logic, pricing algorithms, geo-spatial ETL) and Python + PostgreSQL pipelines integrating data from 30+ plants worldwide into live C-level dashboards.
+- Founder, IncognitoAI (March 2025 – July 2026): built a proxy that anonymizes PII in GenAI prompts using open-source models; led product vision and early sales; won July Demo Day and secured €20k in public grants.
+- Researcher, CINECA (ISCRA Class B) (2023 – 2024): HPC workflows and large-scale polymer-physics simulations on the Leonardo HPC framework. Publication: https://doi.org/10.1063/5.0279969
+
+## Projects
+
+- Enterprise Voice Agent: production agentic voice system for a major telecom; 100K+ inbound calls/day, 75% containment, 1.3s median latency; owned solution design, enterprise API integration, evaluation harness, monitoring, and CI/CD.
+- arte — Typewriter Literary Rendering: maps a novel's characters onto an image grid (Floyd–Steinberg dithering, adaptive thresholds), consuming the text strictly in order, and emits vector stencil PDFs at true physical scale, tiled across A2/A1/A0 sheets for laser cutting. Python, NumPy, Pillow, ReportLab.
+- IncognitoAI: privacy proxy for LLMs that detects and anonymizes PII before inference (fine-tuned Llama 3B for entity recognition plus regex pre-filters), re-injecting sensitive tokens in the response. https://www.incognitoai.eu/
+- Real Estate Valuator: internal Deloitte tool for automated property appraisal combining OMI comparables, cadastral GIS data, and statistical regressions.
+
+## Links
+
+- [Website](https://federicomarini.dev): portfolio, experience, projects, and contact
+- [GitHub](https://github.com/federico-marini)
+- [LinkedIn](https://www.linkedin.com/in/federico-marini-893092b1/)

@@ -2,13 +2,12 @@
 
 [![Next.js](https://img.shields.io/badge/Next.js-15-000?logo=nextdotjs)](https://nextjs.org) [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=000)](https://react.dev) [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss&logoColor=fff)](https://tailwindcss.com) [![License](https://img.shields.io/badge/license-unspecified-lightgrey)](#license)
 
-A modern personal website: smooth motion, dark mode, accessible UI components, a neon‑style 3D hero, and a ready‑to‑use blog.
+A modern personal website: smooth motion, dark mode, accessible UI components, and a neon‑style 3D hero.
 
 ### Highlights
 - **Fluid experience**: Framer Motion animations and polished micro‑interactions.
 - **Consistent design**: CSS theme tokens, display typography, gradients, neon glow.
 - **Dark mode**: instant, persistent theme toggle.
-- **Blog**: simple static routing for quick notes and posts.
 
 ## Tech stack
 - **Next.js 15 (App Router)** and **React 19**
@@ -17,7 +16,6 @@ A modern personal website: smooth motion, dark mode, accessible UI components, a
 - **Three.js + React Three Fiber + drei** for 3D scenes (`components/hero/NeonScene.tsx`)
 - **next-themes** for dark/light
 - **Forms** with `react-hook-form`, `zod`, toast notifications with `sonner`
-- **MDX** via `@mdx-js/react` and `src/mdx-components.tsx`
 
 ## Preview GIF
 Embed a short preview of the site to showcase motion and theme switching.
@@ -61,7 +59,7 @@ npm run lint
 personal-site/
   public/            # Public assets
   src/
-    app/             # App Router (home, blog, layout, providers)
+    app/             # App Router (home, about, layout, providers)
     components/      # UI, motion, sections, 3D scene
     lib/             # Utilities
   eslint.config.mjs
@@ -72,42 +70,6 @@ personal-site/
 ```
 
 Home sections live in `src/components/sections/` (`Hero`, `About`, `Skills`, `Projects`, `Experience`, `Contact`) and are composed in `src/app/page.tsx`.
-
-## Blog: add a post
-This implementation is deliberately simple and static (great for notes/drafts):
-- Post list: edit the `posts` array in `src/app/blog/page.tsx`.
-- Post content: add an entry to the `content` object in `src/app/blog/[slug]/page.tsx` with `title`, `date`, `tags`, `body`.
-
-Minimal example:
-```ts
-// src/app/blog/page.tsx → add to the list
-{ slug: "my-new-post", title: "Title", excerpt: "Preview…", date: "2025-03-01", tags: ["AI", "Web"] }
-
-// src/app/blog/[slug]/page.tsx → add to content
-"my-new-post": {
-  title: "Title",
-  date: "2025-03-01",
-  tags: ["AI", "Web"],
-  body: "Post body…"
-}
-```
-
-When you need to scale, consider MDX posts (e.g. Contentlayer and `.mdx` files) while keeping the same components.
-
-### Enable/disable Blog
-- Default: **ON in development**, **OFF in production**.
-- Override by setting `NEXT_PUBLIC_BLOG_ENABLED` (or `BLOG_ENABLED`) a `"true"`/`"false"`.
-- Quando è OFF: le route `/blog/*` rispondono 404 e il link in navbar è nascosto.
-- Esempi:
-  - Dev forzato OFF:
-    ```
-    NEXT_PUBLIC_BLOG_ENABLED=false
-    ```
-  - Prod ON:
-    ```
-    NEXT_PUBLIC_BLOG_ENABLED=true
-    ```
-  - Puoi creare un file `.env.local` e incollarci uno dei valori.
 
 ## Customize
 - **Color & theme**: tweak tokens in `src/app/globals.css` (`--accent`, surfaces, gradients, neon, etc.).
